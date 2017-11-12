@@ -104,7 +104,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lgDp"
                     android:layout_weight="1"
-                    android:onClick="playerOneFoul"
                     android:text="@string/foul_btn" />
 
                 <!-- Player 1 End Turn Button -->
@@ -114,7 +113,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lgDp"
                     android:layout_weight="2"
-                    android:onClick="endPlayerOneTurn"
                     android:text="@string/end_turn_btn" />
 
             </LinearLayout> <!-- /Player 1 Turn Actions -->
@@ -216,7 +214,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lgDp"
                     android:layout_weight="1"
-                    android:onClick="playerTwoFoul"
                     android:text="@string/foul_btn"
                     android:visibility="gone" />
 
@@ -227,7 +224,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lgDp"
                     android:layout_weight="2"
-                    android:onClick="endPlayerTwoTurn"
                     android:text="@string/end_turn_btn"
                     android:visibility="gone" />
 
@@ -252,7 +248,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/smDp"
             android:background="@color/redBall"
-            android:onClick="ballPotted"
             android:text="@string/red_ball_btn"
             android:textColor="@color/redBall_txt" />
 
@@ -261,7 +256,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/smDp"
-            android:onClick="ballPotted"
             android:orientation="horizontal">
 
             <!-- Yellow Ball -->
@@ -272,7 +266,6 @@
                 android:layout_marginRight="@dimen/smDp"
                 android:layout_weight="1"
                 android:background="@color/yellowBall"
-                android:onClick="ballPotted"
                 android:text="@string/yellow_ball_btn"
                 android:textColor="@color/yellowBall_txt" />
 
@@ -284,7 +277,6 @@
                 android:layout_marginRight="@dimen/smDp"
                 android:layout_weight="1"
                 android:background="@color/greenBall"
-                android:onClick="ballPotted"
                 android:text="@string/green_ball_btn"
                 android:textColor="@color/greenBall_txt" />
 
@@ -295,7 +287,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/brownBall"
-                android:onClick="ballPotted"
                 android:text="@string/brown_ball_btn"
                 android:textColor="@color/brownBall_txt" />
 
@@ -305,7 +296,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ballPotted"
             android:orientation="horizontal">
 
             <!-- Blue Ball -->
@@ -316,7 +306,6 @@
                 android:layout_marginRight="@dimen/smDp"
                 android:layout_weight="1"
                 android:background="@color/blueBall"
-                android:onClick="ballPotted"
                 android:text="@string/blue_ball_btn"
                 android:textColor="@color/blueBall_txt" />
 
@@ -328,7 +317,6 @@
                 android:layout_marginRight="@dimen/smDp"
                 android:layout_weight="1"
                 android:background="@color/pinkBall"
-                android:onClick="ballPotted"
                 android:text="@string/pink_ball_btn"
                 android:textColor="@color/pinkBall_txt" />
 
@@ -339,7 +327,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/blackBall"
-                android:onClick="ballPotted"
                 android:text="@string/black_ball_btn"
                 android:textColor="@color/blackBall_txt" />
 
@@ -354,7 +341,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/lgDp"
-        android:onClick="resetMatch"
         android:text="@string/reset_match_btn" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package io.maerlyn.snookerscores;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        createListeners();
+
         playerOne = new Player("player_1");
         playerTwo = new Player("player_2");
 
@@ -23,6 +26,39 @@ public class MainActivity extends AppCompatActivity {
         setActive(playerOne);
         showPlayerAsActive(playerOne);
         showPlayerAsInactive(playerTwo);
+    }
+
+    private void createListeners() {
+
+        int[] ballBtnIds = {
+                R.id.red_ball_btn,
+                R.id.yellow_ball_btn,
+                R.id.green_ball_btn,
+                R.id.brown_ball_btn,
+                R.id.blue_ball_btn,
+                R.id.pink_ball_btn,
+                R.id.black_ball_btn
+        };
+
+        for (int ballBtnId : ballBtnIds){
+            Button ballBtn = findViewById(ballBtnId);
+            ballBtn.setOnClickListener(this::ballPotted);
+        }
+
+        Button resetBtn = findViewById(R.id.reset_match_btn);
+        resetBtn.setOnClickListener(this::resetMatch);
+
+        Button p1Foul = findViewById(R.id.player_1_foul_btn);
+        p1Foul.setOnClickListener(this::playerOneFoul);
+
+        Button p2Foul = findViewById(R.id.player_2_foul_btn);
+        p2Foul.setOnClickListener(this::playerTwoFoul);
+
+        Button p1End = findViewById(R.id.player_1_end_btn);
+        p1End.setOnClickListener(this::endPlayerOneTurn);
+
+        Button p2End = findViewById(R.id.player_2_end_btn);
+        p2End.setOnClickListener(this::endPlayerTwoTurn);
     }
 
     private void setActive(Player player) {
