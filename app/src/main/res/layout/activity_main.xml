@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/mdDp"
+    android:baselineAligned="true"
+    tools:context="io.maerlyn.snookerscores.MainActivity">
+
+    <!-- Player Scores -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <!-- Player 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Player 1 Name -->
+            <TextView
+                android:id="@+id/player_1_name"
+                style="@style/TextViewCentreMed"
+                android:background="@color/colorPrimaryLight"
+                android:padding="@dimen/smDp"
+                android:text="@string/player_1_name"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <!-- Player 1 Score -->
+            <TextView
+                android:id="@+id/player_1_score"
+                style="@style/TextViewCentre"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/player_1_score"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/scoreSize" />
+
+            <!-- Player 1 Fouls and Ball count -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mdDp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- Player 1 Fouls -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Player 1 Foul Count -->
+                    <TextView
+                        android:id="@+id/player_1_fouls"
+                        style="@style/TextViewCentreLrg"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/fouls_val" />
+
+                    <!-- Player 1 Foul Label -->
+                    <TextView
+                        style="@style/TextViewCentre"
+                        android:text="@string/fouls_label" />
+
+                </LinearLayout> <!-- /Player 1 Fouls -->
+
+                <!-- Player 1 Balls Sunk -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Player 1 Balls Sunk Val -->
+                    <TextView
+                        android:id="@+id/player_1_ball_count"
+                        style="@style/TextViewCentreLrg"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/balls_sunk_val" />
+
+                    <!-- Player 1 Balls Sunk Labal -->
+                    <TextView
+                        style="@style/TextViewCentre"
+                        android:text="@string/balls_sunk_label" />
+
+                </LinearLayout> <!-- /Player 1 Balls Sunk -->
+
+            </LinearLayout> <!-- /Player 1 Fouls and Ball count -->
+
+            <!-- Player 1 Turn Actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Player 1 Foul Button -->
+                <Button
+                    android:id="@+id/player_1_foul_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lgDp"
+                    android:layout_weight="1"
+                    android:onClick="playerOneFoul"
+                    android:text="@string/foul_btn" />
+
+                <!-- Player 1 End Turn Button -->
+                <Button
+                    android:id="@+id/player_1_end_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lgDp"
+                    android:layout_weight="2"
+                    android:onClick="endPlayerOneTurn"
+                    android:text="@string/end_turn_btn" />
+
+            </LinearLayout> <!-- /Player 1 Turn Actions -->
+
+        </LinearLayout> <!-- /Player 1 -->
+
+        <!-- Player Separator -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/smDp"
+            android:layout_marginRight="@dimen/smDp"
+            android:background="@color/colorInactive" />
+
+        <!-- Player 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Player 2 Name-->
+            <TextView
+                android:id="@+id/player_2_name"
+                style="@style/TextViewCentreMed"
+                android:padding="@dimen/smDp"
+                android:text="@string/player_2_name" />
+
+            <!-- Player 2 Score -->
+            <TextView
+                android:id="@+id/player_2_score"
+                style="@style/TextViewCentre"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/player_2_score"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/scoreSize" />
+
+            <!--Player 2 Fouls and Balls Sunk-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mdDp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- Player 2 Fouls -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Player 2 Fouls -->
+                    <TextView
+                        android:id="@+id/player_2_fouls"
+                        style="@style/TextViewCentreLrg"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/fouls_val" />
+
+                    <!-- Player 2 Fouls Label -->
+                    <TextView
+                        style="@style/TextViewCentre"
+                        android:text="@string/fouls_label" />
+
+                </LinearLayout> <!--/Player 2 Fouls-->
+
+                <!-- Player 2 Balls Sunk -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Player 2 Balls Sunk Val-->
+                    <TextView
+                        android:id="@+id/player_2_ball_count"
+                        style="@style/TextViewCentreLrg"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/balls_sunk_val" />
+
+                    <!-- Player 2 Balls Sunk Label -->
+                    <TextView
+                        style="@style/TextViewCentre"
+                        android:text="@string/balls_sunk_label" />
+                </LinearLayout> <!-- /Player 2 Balls Sunk -->
+
+            </LinearLayout> <!--/Player 2 Fouls and Balls Sunk-->
+
+            <!-- Player 2 Turn Actions-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Player 2 Fouls Button -->
+                <Button
+                    android:id="@+id/player_2_foul_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lgDp"
+                    android:layout_weight="1"
+                    android:onClick="playerTwoFoul"
+                    android:text="@string/foul_btn"
+                    android:visibility="gone" />
+
+                <!-- Player 2 End Turn Button-->
+                <Button
+                    android:id="@+id/player_2_end_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lgDp"
+                    android:layout_weight="2"
+                    android:onClick="endPlayerTwoTurn"
+                    android:text="@string/end_turn_btn"
+                    android:visibility="gone" />
+
+            </LinearLayout> <!-- /Player 2 Turn Actions-->
+
+        </LinearLayout> <!-- Player 2-->
+
+    </LinearLayout> <!-- Players -->
+
+    <!-- Balls -->
+    <LinearLayout
+        android:id="@+id/score_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/reset_match_btn"
+        android:orientation="vertical">
+
+        <!-- Red Ball -->
+        <Button
+            android:id="@+id/red_ball_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/smDp"
+            android:background="@color/redBall"
+            android:onClick="ballPotted"
+            android:text="@string/red_ball_btn"
+            android:textColor="@color/redBall_txt" />
+
+        <!-- 2nd row balls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/smDp"
+            android:onClick="ballPotted"
+            android:orientation="horizontal">
+
+            <!-- Yellow Ball -->
+            <Button
+                android:id="@+id/yellow_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/smDp"
+                android:layout_weight="1"
+                android:background="@color/yellowBall"
+                android:onClick="ballPotted"
+                android:text="@string/yellow_ball_btn"
+                android:textColor="@color/yellowBall_txt" />
+
+            <!-- Green Ball -->
+            <Button
+                android:id="@+id/green_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/smDp"
+                android:layout_weight="1"
+                android:background="@color/greenBall"
+                android:onClick="ballPotted"
+                android:text="@string/green_ball_btn"
+                android:textColor="@color/greenBall_txt" />
+
+            <!-- Brown Ball -->
+            <Button
+                android:id="@+id/brown_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/brownBall"
+                android:onClick="ballPotted"
+                android:text="@string/brown_ball_btn"
+                android:textColor="@color/brownBall_txt" />
+
+        </LinearLayout> <!-- /2nd row balls -->
+
+        <!-- 3rd row balls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ballPotted"
+            android:orientation="horizontal">
+
+            <!-- Blue Ball -->
+            <Button
+                android:id="@+id/blue_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/smDp"
+                android:layout_weight="1"
+                android:background="@color/blueBall"
+                android:onClick="ballPotted"
+                android:text="@string/blue_ball_btn"
+                android:textColor="@color/blueBall_txt" />
+
+            <!-- Pink Ball -->
+            <Button
+                android:id="@+id/pink_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/smDp"
+                android:layout_weight="1"
+                android:background="@color/pinkBall"
+                android:onClick="ballPotted"
+                android:text="@string/pink_ball_btn"
+                android:textColor="@color/pinkBall_txt" />
+
+            <!-- Black Ball -->
+            <Button
+                android:id="@+id/black_ball_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/blackBall"
+                android:onClick="ballPotted"
+                android:text="@string/black_ball_btn"
+                android:textColor="@color/blackBall_txt" />
+
+        </LinearLayout><!-- /3rd row balls -->
+
+    </LinearLayout> <!-- /Balls -->
+
+    <!-- Reset Match Button -->
+    <Button
+        android:id="@+id/reset_match_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/lgDp"
+        android:onClick="resetMatch"
+        android:text="@string/reset_match_btn" />
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="smDp">8dp</dimen>
+    <dimen name="mdDp">16dp</dimen>
+    <dimen name="lgDp">32dp</dimen>
+
+
+    <dimen name="smSp">8sp</dimen>
+    <dimen name="mdSp">16sp</dimen>
+    <dimen name="lgSp">32sp</dimen>
+
+    <dimen name="scoreSize">64sp</dimen>
+</resources>

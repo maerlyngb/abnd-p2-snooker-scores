@@ -1,1 +1,1 @@
-# abnd-p2-snooker-scores
+# Snooker Scores

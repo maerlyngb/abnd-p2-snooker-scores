@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4caf50</color>
+    <color name="colorPrimaryDark">#087f23</color>
+    <color name="colorPrimaryLight">#80e27e</color>
+    <color name="colorAccent">#d50000</color>
+    <color name="colorInactive">#bdbdbd</color>
+    <color name="redBall">#d32f2f</color>
+    <color name="redBall_txt">#ffffff</color>
+    <color name="yellowBall">#fbc02d</color>
+    <color name="yellowBall_txt">#ffffff</color>
+    <color name="greenBall">#388e3c</color>
+    <color name="greenBall_txt">#ffffff</color>
+    <color name="brownBall">#5d4037</color>
+    <color name="brownBall_txt">#ffffff</color>
+    <color name="blueBall">#1976d2</color>
+    <color name="blueBall_txt">#ffffff</color>
+    <color name="pinkBall">#c2185b</color>
+    <color name="pinkBall_txt">#ffffff</color>
+    <color name="blackBall">#424242</color>
+    <color name="blackBall_txt">#ffffff</color>
+</resources>

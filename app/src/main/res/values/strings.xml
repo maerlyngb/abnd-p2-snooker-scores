@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Snooker Scores</string>
+    <string name="player_1_name">Player 1</string>
+    <string name="player_2_name">Player 2</string>
+    <string name="player_1_score">0</string>
+    <string name="player_2_score">0</string>
+    <string name="red_ball_btn">red</string>
+    <string name="yellow_ball_btn">yellow</string>
+    <string name="green_ball_btn">green</string>
+    <string name="brown_ball_btn">brown</string>
+    <string name="blue_ball_btn">blue</string>
+    <string name="pink_ball_btn">pink</string>
+    <string name="black_ball_btn">black</string>
+    <string name="reset_match_btn">reset match</string>
+    <string name="end_turn_btn">End Turn</string>
+    <string name="fouls_label">Fouls</string>
+    <string name="fouls_val">0</string>
+    <string name="balls_sunk_label">Balls Sunk</string>
+    <string name="balls_sunk_val">0</string>
+    <string name="foul_btn">foul</string>
+</resources>
