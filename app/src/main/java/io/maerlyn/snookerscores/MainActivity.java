@@ -21,50 +21,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set up click listeners on our buttons
         createListeners();
 
+        // create our player objects
         playerOne = new Player(playerOneId);
         playerTwo = new Player(playerTwoId);
 
         //player one goes first!
         setActive(playerOne);
+
         showPlayerAsActive(playerOne);
         showPlayerAsInactive(playerTwo);
     }
 
-    private void createListeners() {
-
-        int[] ballBtnIds = {
-                R.id.red_ball_btn,
-                R.id.yellow_ball_btn,
-                R.id.green_ball_btn,
-                R.id.brown_ball_btn,
-                R.id.blue_ball_btn,
-                R.id.pink_ball_btn,
-                R.id.black_ball_btn
-        };
-
-        for (int ballBtnId : ballBtnIds){
-            Button ballBtn = findViewById(ballBtnId);
-            ballBtn.setOnClickListener(this::ballPotted);
-        }
-
-        Button resetBtn = findViewById(R.id.reset_match_btn);
-        resetBtn.setOnClickListener(this::resetMatch);
-
-        Button p1Foul = findViewById(R.id.player_1_foul_btn);
-        p1Foul.setOnClickListener(view -> playerFoul(view, playerOne, playerTwo));
-
-        Button p2Foul = findViewById(R.id.player_2_foul_btn);
-        p2Foul.setOnClickListener(view -> playerFoul(view, playerTwo, playerOne));
-
-        Button p1End = findViewById(R.id.player_1_end_btn);
-        p1End.setOnClickListener(view -> endTurn(view, playerOne));
-
-        Button p2End = findViewById(R.id.player_2_end_btn);
-        p2End.setOnClickListener(view -> endTurn(view, playerTwo));
-    }
-
+    /**
+     * set a player to be the active player
+     * @param player to become active
+     */
     private void setActive(Player player) {
         activePlayer = player;
     }
@@ -258,9 +232,44 @@ public class MainActivity extends AppCompatActivity {
      * @param id the id of the TextView to update
      */
     private TextView getTextViewById(String id) {
-        //https://stackoverflow.com/questions/6679434/android-findviewbyid-with-a-variant-string
         int resId = getResources().getIdentifier(id, "id", getPackageName());
         return findViewById(resId);
+    }
+
+    /**
+     * Setup click listeners on our buttons
+     */
+    private void createListeners() {
+
+        int[] ballBtnIds = {
+                R.id.red_ball_btn,
+                R.id.yellow_ball_btn,
+                R.id.green_ball_btn,
+                R.id.brown_ball_btn,
+                R.id.blue_ball_btn,
+                R.id.pink_ball_btn,
+                R.id.black_ball_btn
+        };
+
+        for (int ballBtnId : ballBtnIds){
+            Button ballBtn = findViewById(ballBtnId);
+            ballBtn.setOnClickListener(this::ballPotted);
+        }
+
+        Button resetBtn = findViewById(R.id.reset_match_btn);
+        resetBtn.setOnClickListener(this::resetMatch);
+
+        Button p1Foul = findViewById(R.id.player_1_foul_btn);
+        p1Foul.setOnClickListener(view -> playerFoul(view, playerOne, playerTwo));
+
+        Button p2Foul = findViewById(R.id.player_2_foul_btn);
+        p2Foul.setOnClickListener(view -> playerFoul(view, playerTwo, playerOne));
+
+        Button p1End = findViewById(R.id.player_1_end_btn);
+        p1End.setOnClickListener(view -> endTurn(view, playerOne));
+
+        Button p2End = findViewById(R.id.player_2_end_btn);
+        p2End.setOnClickListener(view -> endTurn(view, playerTwo));
     }
 
 }
