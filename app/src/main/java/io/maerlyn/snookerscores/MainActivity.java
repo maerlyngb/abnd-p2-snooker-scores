@@ -12,9 +12,18 @@ public class MainActivity extends AppCompatActivity {
 
     private Player playerOne;
     private Player playerTwo;
+
     private Player activePlayer;
+
     private final String playerOneId = "player_1";
     private final String playerTwoId = "player_2";
+
+    private final String playerNameSfx = "_name";
+    private final String scoreBtnSfx = "_score";
+    private final String endBtnSfx = "_end_btn";
+    private final String foulBtnSfx = "_foul_btn";
+    private final String foulCntSfx = "_fouls";
+    private final String ballCntSfx = "_ball_count";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,16 +111,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        TextView p1End = getTextViewById(playerToEndTurn.getId() + "_end_btn");
+        TextView p1End = getTextViewById(playerToEndTurn.getId() + endBtnSfx);
         p1End.setVisibility(View.GONE);
 
-        TextView p1Foul = getTextViewById(playerToEndTurn.getId() + "_foul_btn");
+        TextView p1Foul = getTextViewById(playerToEndTurn.getId() + foulBtnSfx);
         p1Foul.setVisibility(View.GONE);
 
-        TextView p2End = getTextViewById(playerToStartTurn.getId() + "_end_btn");
+        TextView p2End = getTextViewById(playerToStartTurn.getId() + endBtnSfx);
         p2End.setVisibility(View.VISIBLE);
 
-        TextView p2Foul = getTextViewById(playerToStartTurn.getId() + "_foul_btn");
+        TextView p2Foul = getTextViewById(playerToStartTurn.getId() + foulBtnSfx);
         p2Foul.setVisibility(View.VISIBLE);
 
         showPlayerAsActive(playerToStartTurn);
@@ -137,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
      * Change the styling of a player's score card to show that they are active
      */
     private void showPlayerAsActive(Player player) {
-        TextView title = getTextViewById(player.getId() + "_name");
+        TextView title = getTextViewById(player.getId() + playerNameSfx);
         title.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
         title.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
-        String[] viewToDeactivate = {"score", "fouls", "ball_count"};
+        String[] viewToDeactivate = {scoreBtnSfx, foulCntSfx, ballCntSfx};
 
         for (String view : viewToDeactivate) {
-            TextView textView = getTextViewById(player.getId() + "_" + view);
+            TextView textView = getTextViewById(player.getId() + view);
             textView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         }
     }
@@ -153,14 +162,14 @@ public class MainActivity extends AppCompatActivity {
      * Change the styling of a player's score card to show that they aren't active
      */
     private void showPlayerAsInactive(Player player) {
-        TextView title = getTextViewById(player.getId() + "_name");
+        TextView title = getTextViewById(player.getId() + playerNameSfx);
         title.setBackgroundColor(0x00000000);
         title.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
-        String[] viewToDeactivate = {"score", "fouls", "ball_count"};
+        String[] viewToDeactivate = {scoreBtnSfx, foulCntSfx, ballCntSfx};
 
         for (String view : viewToDeactivate) {
-            TextView textView = getTextViewById(player.getId() + "_" + view);
+            TextView textView = getTextViewById(player.getId() + view);
             textView.setTextColor(getResources().getColor(R.color.colorInactive));
         }
     }
@@ -202,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
      * @param player the player with the metric to update
      */
     private void updateScoreView(Player player) {
-        TextView scoreView = getTextViewById(player.getId() + "_score");
+        TextView scoreView = getTextViewById(player.getId() + scoreBtnSfx);
         scoreView.setText(String.valueOf(player.getScore()));
     }
 
@@ -212,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
      * @param player the player with the metric to update
      */
     private void updateBallsView(Player player) {
-        TextView scoreView = getTextViewById(player.getId() + "_ball_count");
+        TextView scoreView = getTextViewById(player.getId() + ballCntSfx);
         scoreView.setText(String.valueOf(player.getBallsPotted()));
     }
 
@@ -222,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
      * @param player the player with the metric to update
      */
     private void updateFoulsView(Player player) {
-        TextView scoreView = getTextViewById(player.getId() + "_fouls");
+        TextView scoreView = getTextViewById(player.getId() + foulCntSfx);
         scoreView.setText(String.valueOf(player.getFouls()));
     }
 
@@ -232,7 +241,8 @@ public class MainActivity extends AppCompatActivity {
      * @param id the id of the TextView to update
      */
     private TextView getTextViewById(String id) {
-        int resId = getResources().getIdentifier(id, "id", getPackageName());
+        final String viewIdentifier = "id";
+        int resId = getResources().getIdentifier(id, viewIdentifier, getPackageName());
         return findViewById(resId);
     }
 
