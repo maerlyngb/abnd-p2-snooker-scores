@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     private Player playerOne;
     private Player playerTwo;
     private Player activePlayer;
+    private final String playerOneId = "player_1";
+    private final String playerTwoId = "player_2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         createListeners();
 
-        playerOne = new Player("player_1");
-        playerTwo = new Player("player_2");
+        playerOne = new Player(playerOneId);
+        playerTwo = new Player(playerTwoId);
 
         //player one goes first!
         setActive(playerOne);
@@ -49,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
         resetBtn.setOnClickListener(this::resetMatch);
 
         Button p1Foul = findViewById(R.id.player_1_foul_btn);
-        p1Foul.setOnClickListener(this::playerOneFoul);
+        p1Foul.setOnClickListener(view -> playerFoul(view, playerOne, playerTwo));
 
         Button p2Foul = findViewById(R.id.player_2_foul_btn);
-        p2Foul.setOnClickListener(this::playerTwoFoul);
+        p2Foul.setOnClickListener(view -> playerFoul(view, playerTwo, playerOne));
 
         Button p1End = findViewById(R.id.player_1_end_btn);
-        p1End.setOnClickListener(this::endPlayerOneTurn);
+        p1End.setOnClickListener(view -> endTurn(view, playerOne));
 
         Button p2End = findViewById(R.id.player_2_end_btn);
-        p2End.setOnClickListener(this::endPlayerTwoTurn);
+        p2End.setOnClickListener(view -> endTurn(view, playerTwo));
     }
 
     private void setActive(Player player) {
@@ -100,77 +104,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * End player one's turn and start player two's turn
+     * End a player's turn and start the next player's turn
      *
      * @param view the button that triggered this method
+     * @param player the player who's turn is ending
      */
-    public void endPlayerOneTurn(View view) {
-        activePlayer = playerTwo;
+    public void endTurn(View view, Player player) {
 
-        View p1End = findViewById(R.id.player_1_end_btn);
+        Player playerToEndTurn = null;
+        Player playerToStartTurn = null;
+
+        switch (player.getId()){
+            case playerOneId:
+                playerToEndTurn = playerOne;
+                playerToStartTurn = playerTwo;
+                activePlayer = playerTwo;
+                break;
+
+            case playerTwoId:
+                playerToEndTurn = playerTwo;
+                playerToStartTurn = playerOne;
+                activePlayer = playerOne;
+                break;
+        }
+
+        TextView p1End = getTextViewById(playerToEndTurn.getId() + "_end_btn");
         p1End.setVisibility(View.GONE);
 
-        View p1Foul = findViewById(R.id.player_1_foul_btn);
+        TextView p1Foul = getTextViewById(playerToEndTurn.getId() + "_foul_btn");
         p1Foul.setVisibility(View.GONE);
 
-        View p2End = findViewById(R.id.player_2_end_btn);
+        TextView p2End = getTextViewById(playerToStartTurn.getId() + "_end_btn");
         p2End.setVisibility(View.VISIBLE);
 
-        View p2Foul = findViewById(R.id.player_2_foul_btn);
+        TextView p2Foul = getTextViewById(playerToStartTurn.getId() + "_foul_btn");
         p2Foul.setVisibility(View.VISIBLE);
 
-        showPlayerAsActive(playerTwo);
-        showPlayerAsInactive(playerOne);
+        showPlayerAsActive(playerToStartTurn);
+        showPlayerAsInactive(playerToEndTurn);
     }
 
     /**
-     * End player two's turn and start player one's turn
+     * Record a foul for a player and give their opponent some points
      *
+     * @param foulingPlayer the player to fouled
+     * @param opponent the player to get awared foul points
      * @param view the button that triggered this method
      */
-    public void endPlayerTwoTurn(View view) {
-        activePlayer = playerOne;
+    public void playerFoul(View view, Player foulingPlayer, Player opponent) {
+        foulingPlayer.foulPlayed();
+        opponent.foulAwarded();
 
-        View p1End = findViewById(R.id.player_2_end_btn);
-        p1End.setVisibility(View.GONE);
-
-        View p1Foul = findViewById(R.id.player_2_foul_btn);
-        p1Foul.setVisibility(View.GONE);
-
-        View p2End = findViewById(R.id.player_1_end_btn);
-        p2End.setVisibility(View.VISIBLE);
-
-        View p2Foul = findViewById(R.id.player_1_foul_btn);
-        p2Foul.setVisibility(View.VISIBLE);
-
-        showPlayerAsActive(playerOne);
-        showPlayerAsInactive(playerTwo);
-    }
-
-    /**
-     * Record a foul for player one and give player two some points
-     *
-     * @param view the button that triggered this method
-     */
-    public void playerOneFoul(View view) {
-        playerOne.foulPlayed();
-        playerTwo.foulAwarded();
-
-        updateFoulsView(playerOne);
-        updateScoreView(playerTwo);
-    }
-
-    /**
-     * Record a foul for player two and give player one some points
-     *
-     * @param view the button that triggered this method
-     */
-    public void playerTwoFoul(View view) {
-        playerTwo.foulPlayed();
-        playerOne.foulAwarded();
-
-        updateFoulsView(playerTwo);
-        updateScoreView(playerOne);
+        updateFoulsView(foulingPlayer);
+        updateScoreView(opponent);
     }
 
     /**
@@ -223,7 +209,8 @@ public class MainActivity extends AppCompatActivity {
         updateFoulsView(playerOne);
         updateFoulsView(playerTwo);
 
-        endPlayerTwoTurn(null);
+        // make sure we start with player one
+        endTurn(null, playerTwo);
     }
 
     /**
